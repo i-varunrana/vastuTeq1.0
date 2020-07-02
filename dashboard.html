@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vastuTeq</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/ico">
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- FONTAWESOME CSS -->
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+
+    <!-- JQUERY -->
+    <script src="js/helper/jquery.min.js"></script>
+    <!-- POPPER JS -->
+    <script src="js/helper/popper.min.js"></script>
+    <!-- BOOTSTRAP JS -->
+    <script src="js/helper/bootstrap.min.js"></script>
+    <!-- FONTAWESOME JS -->
+    <script src="assets/fontawesome/js/all.min.js"></script>
+
+</head>
+
+<body>
+    <!-- 
+    //////////////////////////////// --- H E A D E R ---  ////////////////////////////////
+    -->
+    <section class="header">
+        <div class="title-bar">
+            <img class="logo" src="assets/logo/logo2.svg" alt="logo" width="130">
+        </div>
+        <div id="dynamicBar">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Drafts</li>
+                </ol>
+            </nav>
+            <div class="dynamicbar-right">
+                <button type="button" class="btn btn-sm btn-outline rounded-0" data-toggle="modal"
+                    data-target="#modal"><i class="fas fa-plus"></i>&nbsp;&nbsp;New Project</button>
+                <img class="profile thumbnail rounded-circle" src="assets/images/thumbnail.png" alt="user" width="20"
+                    id="profileButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileButton">
+                    <a class="dropdown-item modal__trigger" href="#" data-modal="#modal3"><i
+                            class="fas fa-cog"></i>&nbsp;&nbsp;Setting</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- M E N U  I C O N -->
+    <span class="toggle-button">
+        <div class="menu-bar menu-bar-top"></div>
+        <div class="menu-bar menu-bar-middle"></div>
+        <div class="menu-bar menu-bar-bottom"></div>
+    </span>
+
+    <!-- M E N U  I T E M S -->
+    <div class="menu-wrap">
+        <div class="menu-sidebar">
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Client</a></li>
+                <li><a href="#">Properties</a></li>
+                <!-- <li class="menu-item-has-children"><a href="#">Click The Arrow</a>
+                    <span class="sidebar-menu-arrow"></span>
+                    <ul class="sub-menu">
+                        <li><a href="#">Alignment</a></li>
+                        <li><a href="#">Markup</a></li>
+                        <li><a href="#">Comments</a></li>
+                    </ul>
+                </li> -->
+                <li><a href="ayadi.html">Ayadi Calculator</a></li>
+                <li><a href="devtas.html">Devtas</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- 
+    //////////////////////////////// --- D R A W  A R E A ---  ////////////////////////////////
+    -->
+    <section id="mainArea">
+        <div class="container p-4">
+            <div class="row justify-content-md-start">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card rounded border border-primary bubbly-button" data-toggle="modal"
+                        data-target="#modal">
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <h5 class="text-small text-primary create-new">Create New Project</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card rounded bubbly-button p-1">
+                        <img class="card-img-top" src="/assets/images/swastika.svg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="project-name card-text">
+                                Project Name
+                            </div>
+                            <div class="last-update card-text">
+                                Last edited 19 hours ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card rounded bubbly-button p-1">
+                        <img class="card-img-top" src="/assets/images/om.svg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="project-name card-text">
+                                Project Name
+                            </div>
+                            <div class="last-update card-text">
+                                Last edited 19 hours ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card rounded bubbly-button p-1">
+                        <img class="card-img-top" src="/assets/images/swastika.svg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="project-name card-text">
+                                Project Name
+                            </div>
+                            <div class="last-update card-text">
+                                Last edited 19 hours ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card rounded bubbly-button p-1">
+                        <img class="card-img-top" src="/assets/images/om.svg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="project-name card-text">
+                                Project Name
+                            </div>
+                            <div class="last-update card-text">
+                                Last edited 19 hours ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    //////////////////////////////// --- R I G H T  S I D E B A R ---  ////////////////////////////////
+    -->
+    <!-- <section class="right-sidebar"></section> -->
+
+
+    <!-- 
+    //////////////////////////////// --- A P P  M O D A L ---  ////////////////////////////////
+    -->
+
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Client & Property</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="mb-4">Client Info</h5>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Full Name</label>
+                                <input type="text" class="form-control form-control-sm" id="inputEmail4"
+                                    placeholder="Name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Mobile No.</label>
+                                <input type="number" class="form-control form-control-sm" id="inputEmail4"
+                                    placeholder="Mobile No.">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control form-control-sm" id="inputEmail4"
+                                    placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress">Address</label>
+                                <input type="text" class="form-control form-control-sm" id="inputAddress"
+                                    placeholder="1234 Main St">
+                            </div>
+                        </div>
+
+                        <h5 class="mb-4">Property Info</h5>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputEmail4">Name</label>
+                                <input type="text" class="form-control form-control-sm" id="inputEmail4"
+                                    placeholder="property name">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputEmail4">Category</label>
+                                <input type="text" class="form-control form-control-sm" id="inputEmail4"
+                                    placeholder="property category">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputEmail4">Type</label>
+                                <input type="text" class="form-control form-control-sm" id="inputEmail4"
+                                    placeholder="property type">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Owner</label>
+                                <input type="text" class="form-control form-control-sm" id="inputEmail4"
+                                    placeholder="property owner">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress">Address</label>
+                                <input type="text" class="form-control form-control-sm" id="inputAddress"
+                                    placeholder="property address">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary rounded-0" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-primary rounded-0 save-info">Save Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CUSTOM JS -->
+        <script src="js/dashboard.js"></script>
+</body>
+
+</html>

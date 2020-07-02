@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vastuTeq</title>
+    <!-- FAVICON -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/ico">
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- FONTAWESOME CSS -->
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="css/ayadi.css">
+
+
+    <!-- JQUERY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+    <!-- POPPER JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+    <!-- BOOTSTRAP JS -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- D3 JS SCRIPT -->
+    <script src="js/d3.min.js"></script>
+    <!-- FONTAWESOME JS -->
+    <script src="node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="js/ayadi.js"></script>
+</head>
+<body>
+    <section class="ayadi-container p-4">
+        <div class="card p-2">
+            <h4 class="text-center">Ayadi Calculator</h4>
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="w-25 border p-2">
+                    <div class="container text-center border-bottom">
+                        Property Dimensions
+                    </div>
+                    <div class="container mt-2">
+                        <div class="form-row">
+                            <div class="input-group input-group-sm mb-2">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="basic-addon1">Length</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="length" aria-describedby="basic-addon1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Feet</button>
+                                    <div class="dropdown-menu m-0 text-sm">
+                                      <a class="dropdown-item" href="#">Feet</a>
+                                      <a class="dropdown-item" href="#">Inch</a>
+                                      <a class="dropdown-item" href="#">Meter</a>
+                                      <a class="dropdown-item" href="#">Yard</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group input-group-sm mb-2">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="basic-addon1">Breadth</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="breadth" aria-describedby="basic-addon1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Feet</button>
+                                    <div class="dropdown-menu m-0 text-sm">
+                                        <a class="dropdown-item" href="#">Feet</a>
+                                        <a class="dropdown-item" href="#">Inch</a>
+                                        <a class="dropdown-item" href="#">Meter</a>
+                                        <a class="dropdown-item" href="#">Yard</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group input-group-sm mb-2">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="basic-addon1">1 Hasta</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="hasta" aria-describedby="basic-addon1" value="33">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" aria-haspopup="true" aria-expanded="false">Inch</button>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="inputGroupSelect01">Unit</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                  <option selected>Choose...</option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-75 border p-2">
+
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
