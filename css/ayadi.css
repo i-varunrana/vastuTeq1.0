@@ -27,6 +27,19 @@
     font-size: 12px !important;
 }  
 
+.overflow-elipsis {
+  white-space: nowrap; 
+  width: 90px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.form-check-label {
+  line-height: 10px;
+}
+
+
+
 body {
     font-family: 'Raleway-Light';
 }  
@@ -37,5 +50,10 @@ body {
 }
 
 .card {
+    height: 590px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.display-report-area {
+  height: 100%;
 }

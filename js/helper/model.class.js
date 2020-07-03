@@ -11,19 +11,19 @@ export default class Model {
 
     add(data) {
 
-        const uId = Math.floor(1000000000 + Math.random() * 9000000000);
+        console.log(data);
 
         const houseMap = {
-            uniqueId: uId,
-            id: this.houseMaps.length > 0 ? this.houseMaps[this.houseMaps.length - 1].id + 1 : 1,
+            // id: this.houseMaps.length > 0 ? this.houseMaps[this.houseMaps.length - 1].id + 1 : 1,
+            id: data.id,
             stage: 1,
-            imageData: data,
+            imageData: data.image,
             type: "custom",
             vedicBoundariesCoords: [],
-            boundariesCoords: [],
+            customBoundariesCoords: [],
             centroid: [],
-            FaceCoords: [],
-            facingDegree: 0,
+            faceCoords: [],
+            dimension: {},
             complete: false,
         }
 
@@ -31,98 +31,190 @@ export default class Model {
         this._commit(this.houseMaps);
     }
 
-    delete() {
-        localStorage.removeItem("houseMaps");
-    }
+    editType(id, updatedType) {
+        this.houseMaps = this.houseMaps.map(houseMap =>
+            houseMap.id === id ? { 
+                id: houseMap.id,
+                stage: houseMap.stage,
+                imageData: houseMap.imageData,
+                type: updatedType,
+                vedicBoundariesCoords: houseMap.vedicBoundariesCoords,
+                customBoundariesCoords: houseMap.customBoundariesCoords,
+                centroid: houseMap.centroid,
+                faceCoords: houseMap.faceCoords,
+                dimenision: houseMap.dimenision,
+                complete: houseMap.complete
+            } : houseMap
+        )
 
-    editType(type) {
-        this.houseMaps[0].type = type;
         this._commit(this.houseMaps); 
     }
 
-    editVedicBoundariesCoords(pts) {
-        this.houseMaps[0].BoundariesCoords = pts;
+    editVedicBoundariesCoords(id,updatedVedicCoords) {
+        this.houseMaps = this.houseMaps.map(houseMap =>
+            houseMap.id === id ? { 
+                id: houseMap.id,
+                stage: houseMap.stage,
+                imageData: houseMap.imageData,
+                type: houseMap.type,
+                vedicBoundariesCoords: updatedVedicCoords,
+                customBoundariesCoords: houseMap.customBoundariesCoords,
+                centroid: houseMap.centroid,
+                faceCoords: houseMap.faceCoords,
+                dimenision: houseMap.dimenision,
+                complete: houseMap.complete
+            } : houseMap
+        )
+
         this._commit(this.houseMaps); 
     }
 
-    editBoundariesCoords(pts) {
-        this.houseMaps[0].boundariesCoords = pts;
+    editCustomBoundariesCoords(id, updatedCustomCoords) {
+        this.houseMaps = this.houseMaps.map(houseMap =>
+            houseMap.id === id ? { 
+                id: houseMap.id,
+                stage: houseMap.stage,
+                imageData: houseMap.imageData,
+                type: houseMap.type,
+                vedicBoundariesCoords: houseMap.vedicBoundariesCoords,
+                customBoundariesCoords: updatedCustomCoords,
+                centroid: houseMap.centroid,
+                faceCoords: houseMap.faceCoords,
+                dimenision: houseMap.dimenision,
+                complete: houseMap.complete
+            } : houseMap
+        )
+
         this._commit(this.houseMaps);
     }
 
-    editCentroid(center) {
-        this.houseMaps[0].centroid = center;
+    editCentroid(id, updatedCentroid) {
+        this.houseMaps = this.houseMaps.map(houseMap =>
+            houseMap.id === id ? { 
+                id: houseMap.id,
+                stage: houseMap.stage,
+                imageData: houseMap.imageData,
+                type: houseMap.type,
+                vedicBoundariesCoords: houseMap.vedicBoundariesCoords,
+                customBoundariesCoords: houseMap.customBoundariesCoords,
+                centroid: updatedCentroid,
+                faceCoords: houseMap.faceCoords,
+                dimenision: houseMap.dimenision,
+                complete: houseMap.complete
+            } : houseMap
+        )
+
         this._commit(this.houseMaps);
     }
 
-    editFaceCoords(pts) {
-        this.houseMaps[0].FaceCoords = pts;
+    editFaceCoords(id, updatedFaceCoords) {
+        this.houseMaps = this.houseMaps.map(houseMap =>
+            houseMap.id === id ? { 
+                id: houseMap.id,
+                stage: houseMap.stage,
+                imageData: houseMap.imageData,
+                type: houseMap.type,
+                vedicBoundariesCoords: houseMap.vedicBoundariesCoords,
+                customBoundariesCoords: houseMap.customBoundariesCoords,
+                centroid: houseMap.centroid,
+                faceCoords: updatedFaceCoords,
+                dimenision: houseMap.dimenision,
+                complete: houseMap.complete
+            } : houseMap
+        )
+
         this._commit(this.houseMaps);
     }
 
-    editFacingDegree(degree) {
-        this.houseMaps[0].facingDegree = degree;
+    editDimension(id, updatedDimension) {
+        this.houseMaps = this.houseMaps.map(houseMap =>
+            houseMap.id === id ? { 
+                id: houseMap.id,
+                stage: houseMap.stage,
+                imageData: houseMap.imageData,
+                type: houseMap.type,
+                vedicBoundariesCoords: houseMap.vedicBoundariesCoords,
+                customBoundariesCoords: houseMap.customBoundariesCoords,
+                centroid: houseMap.centroid,
+                faceCoords: houseMap.faceCoords,
+                dimenision: updatedDimension,
+                complete: houseMap.complete
+            } : houseMap
+        )
+
         this._commit(this.houseMaps);
     }
 
     // Alter stage according to completion
-    staging(stage) {
+    editStage(id, updatedStage) {
         this.houseMaps = this.houseMaps.map(houseMap =>
-          houseMap.id === 1
-            ? {
+            houseMap.id === id ? { 
                 id: houseMap.id,
-                stage: stage,
+                stage: updatedStage,
                 imageData: houseMap.imageData,
-                boundariesCoords: houseMap.boundariesCoords,
+                type: houseMap.type,
+                vedicBoundariesCoords: houseMap.vedicBoundariesCoords,
+                customBoundariesCoords: houseMap.customBoundariesCoords,
                 centroid: houseMap.centroid,
-                FaceCoords: houseMap.FaceCoords,
-                facingDegree: houseMap.facingDegree,
+                faceCoords: houseMap.faceCoords,
+                dimenision: houseMap.dimenision,
                 complete: houseMap.complete
-              }
-            : houseMap
-        );
-    
+            } : houseMap
+        )
+
         this._commit(this.houseMaps);
     }
 
     // Processing is complete
     complete(id) {
         this.houseMaps = this.houseMaps.map(houseMap =>
-          houseMap.id === id
-            ? {
+            houseMap.id === id ? { 
                 id: houseMap.id,
-                stage: houseMap.stage,
+                stage: updatedStage,
                 imageData: houseMap.imageData,
-                markedEdgePoints: houseMap.markedEdgePoints,
+                type: houseMap.type,
+                vedicBoundariesCoords: houseMap.vedicBoundariesCoords,
+                customBoundariesCoords: houseMap.customBoundariesCoords,
+                centroid: houseMap.centroid,
+                faceCoords: houseMap.faceCoords,
+                dimenision: updatedDimension,
                 complete: true
-              }
-            : houseMap
-        );
-    
+            } : houseMap
+        )
+
         this._commit(this.houseMaps);
     }
 
-    getBoundariesCoords() {
-        return this.houseMaps[0].boundariesCoords;
-    }
+    // getCustomBoundariesCoords() {
+    //     return this.houseMaps[0].customBoundariesCoords;
+    // }
 
-    getCentroid() {
-        return this.houseMaps[0].centroid;
-    }
+    // getCentroid() {
+    //     return this.houseMaps[0].centroid;
+    // }
 
-    getFaceCoords() {
-        return this.houseMaps[0].FaceCoords;
-    }
+    // getFaceCoords() {
+    //     return this.houseMaps[0].FaceCoords;
+    // }
 
-    getFacingDegree() {
-        return this.houseMaps[0].facingDegree;
-    }
-
-    getHouseMap() {
-        return this.houseMaps;
-    }
+    // getFacingDegree() {
+    //     return this.houseMaps[0].facingDegree;
+    // }
     
     hasHouseMap() {
-        return this.houseMaps.length > 0 ? true : false
+        return this.houseMaps.filter( houseMap => houseMap.id == id ? true: false )
+    }
+
+    getHouseMap(id) {
+        return this.houseMaps.filter( houseMap => houseMap.id == id ? houseMap : null )
+    }
+
+    deleteHouseMap(id) {
+        this.houseMaps = this.houseMaps.filter(houseMap => houseMap.id !== id)
+        this._commit(this.houseMap)
+    }
+
+    getMaps() {
+        return this.houseMaps;
     }
 }

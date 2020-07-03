@@ -22,18 +22,34 @@ export default class StageSecond {
       .attr("class", "actionbox-body input-group input-group-sm mb-1");
 
     let selectbox = actionBody.append("select").attr("class", "custom-select");
-    selectbox.append('option').property('selected','').property('disabled','').html('Choose Face');
 
+    let faceSelectData = [];
     for (let i = 0; i < that.mapBoundariesCoords.length; i++) {
       let j = i < that.mapBoundariesCoords.length - 1 ? i + 1 : 0;
-      let wallPointFirst = (i + 10).toString(36).toUpperCase();
-      let wallPointSecond = (j + 10).toString(36).toUpperCase();
-      selectbox.append("option").attr("value", [
-          that.mapBoundariesCoords[i],
-          that.mapBoundariesCoords[j],
-        ])
-        .html(`Wall ${wallPointFirst} - ${wallPointSecond}`);
+      faceSelectData.push({
+        text: `wall ${(i + 10).toString(36).toUpperCase()} - ${(j + 10).toString(36).toUpperCase()}`,
+        value: [that.mapBoundariesCoords[i], that.mapBoundariesCoords[j]]
+      });
     }
+
+    let options = selectbox.selectAll("option")
+    .data(faceSelectData)
+    .enter()
+    .append("option")
+    .attr("class","text-uppercase text-sm");
+
+    options.text(function(d) {
+      return d.text;
+    })
+    .attr("value", function(d) {
+      return d.value;
+    });
+
+    selectbox.attr('value',faceSelectData[0].value);
+
+    str = selectbox.node().value.split(',');
+    pointA = [parseInt(str[0]),parseInt(str[1])];
+    pointB = [parseInt(str[2]),parseInt(str[3])];
 
     let selectBtn = actionBody
       .append("div")
@@ -61,10 +77,10 @@ export default class StageSecond {
 
         this.actionbox.clear().hide();
         that.faceCoords = [pointA, pointB];
-        that.model.editFaceCoords([pointA, pointB]);
+        that.model.editFaceCoords(that.mapId, [pointA, pointB]);
 
         that._stage = 3;
-        that.model.staging(2);
+        that.model.editStage(that.mapId, 3);
         that.start();
 
       }

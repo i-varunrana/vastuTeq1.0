@@ -25,9 +25,8 @@ export default class StageFourth {
         .attr("class", "form-row actionbox-body");  
   
       let faceSelectbox = actionBody.append('div').attr('class','col-md-6')
-      .append("select").attr("class", "form-control form-control-sm text-sm");
-      faceSelectbox.append('option').attr('selected','')
-      .attr('disabled','').html('select Face');
+      .append("select").attr('name','select-face').attr("class", "form-control form-control-sm text-sm");
+      faceSelectbox.append('option').html('select Face');
   
       for (let i = 0; i < that.mapBoundariesCoords.length; i++) {
         let j = i < that.mapBoundariesCoords.length - 1 ? i + 1 : 0;
@@ -37,14 +36,12 @@ export default class StageFourth {
             that.mapBoundariesCoords[i],
             that.mapBoundariesCoords[j],
           ])
-          .html(`Wall ${wallPointFirst} - ${wallPointSecond}`);
+          .text(`Wall ${wallPointFirst} - ${wallPointSecond}`);
       }
 
       let gridSelectbox = actionBody.append('div').attr('class','col-md-6')
-      .append("select").attr("class", "form-control form-control-sm text-sm");
-      gridSelectbox.append('option').attr('selected','')
-      .attr('disabled','').html('select Grid');
-
+      .append("select").attr('name','select-grid').attr("class", "form-control form-control-sm text-sm");
+      gridSelectbox.append('option').html('select Grid');
       gridSelectbox.append("option").attr("value", 8).html('8 Division');
       gridSelectbox.append("option").attr("value", 16).html('16 Division');
       gridSelectbox.append("option").attr("value", 32).html('32 Division');
@@ -77,7 +74,7 @@ export default class StageFourth {
         let pointB = [parseInt(str[2]),parseInt(str[3])];
 
         that.faceCoords = [pointA, pointB];
-        that.model.editFacingWallPoints([pointA, pointB]);
+        that.model.editFaceCoords(that.mapId, [pointA, pointB]);
         that.start();
 
       })

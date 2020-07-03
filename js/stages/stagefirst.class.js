@@ -182,9 +182,9 @@ export default class StageFirst {
                 that.mapBoundariesCoords = this.points;
                 that.centroid = Utility.getCentroid(this.points);
                 that._stage = 2;
-                that.model.staging(2);
-                that.model.editBoundariesCoords(this.points);
-                that.model.editCentroid(that.centroid);
+                that.model.editStage(that.mapId, 2);
+                that.model.editCustomBoundariesCoords(that.mapId, this.points);
+                that.model.editCentroid(that.mapId, that.centroid);
                 that.start();
 
             } else {

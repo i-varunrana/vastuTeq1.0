@@ -7,95 +7,221 @@
     <!-- FAVICON -->
     <link rel="icon" href="assets/icons/favicon.ico" type="image/ico">
     <!-- BOOTSTRAP CSS -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- FONTAWESOME CSS -->
-    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="css/ayadi.css">
 
 
     <!-- JQUERY -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+    <script src="js/helper/jquery.min.js"></script>
     <!-- POPPER JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+    <script src="js/helper/popper.min.js"></script>
     <!-- BOOTSTRAP JS -->
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/helper/bootstrap.min.js"></script>
     <!-- D3 JS SCRIPT -->
     <script src="js/d3.min.js"></script>
     <!-- FONTAWESOME JS -->
-    <script src="node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
+    <script src="assets/fontawesome/js/all.min.js"></script>
     <!-- CUSTOM JS -->
-    <script src="js/ayadi.js"></script>
 </head>
 <body>
     <section class="ayadi-container p-4">
-        <div class="card p-2">
+        <div class="card p-2 pb-4">
             <h4 class="text-center">Ayadi Calculator</h4>
             <div class="container d-flex justify-content-center align-items-center">
                 <div class="w-25 border p-2">
+
                     <div class="container text-center border-bottom">
                         Property Dimensions
                     </div>
+
                     <div class="container mt-2">
                         <div class="form-row">
-                            <div class="input-group input-group-sm mb-2">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon1">Length</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="length" aria-describedby="basic-addon1">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Feet</button>
-                                    <div class="dropdown-menu m-0 text-sm">
-                                      <a class="dropdown-item" href="#">Feet</a>
-                                      <a class="dropdown-item" href="#">Inch</a>
-                                      <a class="dropdown-item" href="#">Meter</a>
-                                      <a class="dropdown-item" href="#">Yard</a>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="text-sm" for="exampleFormControlInput1">Length</label><span class="text-sm ml-2 text-danger unit-text">Feet</span>
+                                    <input type="email" class="form-control form-control-sm text-sm" id="exampleFormControlInput1" placeholder="">
                                 </div>
                             </div>
-                            <div class="input-group input-group-sm mb-2">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon1">Breadth</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="breadth" aria-describedby="basic-addon1">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Feet</button>
-                                    <div class="dropdown-menu m-0 text-sm">
-                                        <a class="dropdown-item" href="#">Feet</a>
-                                        <a class="dropdown-item" href="#">Inch</a>
-                                        <a class="dropdown-item" href="#">Meter</a>
-                                        <a class="dropdown-item" href="#">Yard</a>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="text-sm" for="exampleFormControlInput1">Breadth</label><span class="text-sm ml-2 text-danger unit-text">Feet</span>
+                                    <input type="email" class="form-control form-control-sm text-sm" id="exampleFormControlInput1" placeholder="">
                                 </div>
                             </div>
-                            <div class="input-group input-group-sm mb-2">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon1">1 Hasta</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="hasta" aria-describedby="basic-addon1" value="33">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" aria-haspopup="true" aria-expanded="false">Inch</button>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="text-sm" for="exampleFormControlInput1">1 Hasta</label><span class="text-sm ml-2 text-danger">Inch</span>
+                                    <input type="email" class="form-control form-control-sm text-sm" id="exampleFormControlInput1" placeholder="">
                                 </div>
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <label class="input-group-text" for="inputGroupSelect01">Unit</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="text-sm" for="exampleFormControlInput1">Unit</label>
+                                    <select class="form-control form-control-sm text-sm" name="dimension-unit">
+                                        <option value="feet" selected>Feet</option>
+                                        <option value="inch">Inch</option>
+                                        <option value="meter">Meter</option>
+                                        <option value="yard">Yard</option>
+                                    </select>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                  <option selected>Choose...</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
-                                </select>
-                              </div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="container">
+                       <div class="form-row">
+                           <div class="col-md-6">
+                               <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                    <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                    Aaya
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Vaara
+                                     </label>
+                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Amsha
+                                     </label>
+                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Dravya
+                                     </label>
+                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Rina
+                                     </label>
+                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Nakshatra
+                                     </label>
+                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Tithi
+                                     </label>
+                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Yoga
+                                     </label>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Aayu
+                                     </label>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Vash Mandal
+                                     </label>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Vyaya
+                                     </label>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Yoni
+                                     </label>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                                     <label class="form-check-label text-sm overflow-elipsis" for="defaultCheck1">
+                                     Tarabala
+                                     </label>
+                                 </div>
+                             </div>
+                             <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="text-sm" for="exampleFormControlInput1">Owners Nakshatra</label>
+                                    <select class="form-control form-control-sm text-sm" name="owner-nakshatra">
+                                    </select>
+                                </div>
+                             </div>
+                       </div> 
+                    </div>
+
+                    <div class="container">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                    <label class="form-check-label text-sm overflow-elipsis" for="exampleRadios1">
+                                      Detail Report
+                                    </label>
+                                  </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                    <label class="form-check-label text-sm overflow-elipsis" for="exampleRadios1">
+                                      Summary Report
+                                    </label>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container mt-2 border-top pt-3">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-outline-primary btn-sm btn-block">Calculate</button>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="w-75 border p-2">
+                <div class="w-75 border p-3 display-report-area bg-secondary">
 
                 </div>
             </div>
         </div>
     </section>
+
+    <script src="js/ayadi.js"></script>
 </body>
 </html>

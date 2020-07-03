@@ -1,3 +1,6 @@
+import Models from './helper/models.class.js';
+
+var model = new Models();
 
 window.onload = function() {
 
@@ -31,21 +34,28 @@ window.onload = function() {
     });
 
     loginSubmitBtn.addEventListener('click', (e) => {
-        window.location.href = 'dashboard.html'
-    })
+        //window.location.href = 'dashboard.html';
+        let name = document.querySelector(".login-input[name='name']").value;
+        let password = document.querySelector(".login-input[name='password']").value;
 
-    signupSubmitBtn.addEventListener('click', (e) => {
-        let name = document.querySelector("[name='name']").value;
-        let emailAddress = document.querySelector("[name='email']").value;
-        let password = document.querySelector("[name='password']").value;
-
-        if(name == "" && emailAddress == "" && password == "") {
-
+        if(name == "" && password == "") {
+            
         }else {
             alert("All fields are required");
         }
+    })
 
-        //console.log(name,emailAddress,password);
+    signupSubmitBtn.addEventListener('click', (e) => {
+        let name = document.querySelector(".signup-input[name='name']").value;
+        let emailAddress = document.querySelector(".signup-input[name='email']").value;
+        let password = document.querySelector(".signup-input[name='password']").value;
+
+        if(name == "" && emailAddress == "" && password == "") {
+            alert("All fields are required");
+        }else {
+            model.addUser({name:name,email:emailAddress,password:password});
+            window.location.href = 'draw.html'
+        }
     })
 
 

@@ -23,6 +23,7 @@ class App {
         this.zoomData = {x: 0, y: 0, k: 1};
         this.DISABLE = true;
 
+        this.mapId = localStorage.getItem("selectedMapId") || null;
         this.mapBoundariesCoords = [];
         this.centroid = [];
         this.faceCoords = [];
@@ -130,13 +131,47 @@ class App {
         // ............................................................
 
 
-        // INITIALIZING STAGE
-        //this._stage = this.model.getHouseMap()[0].stage;
-        this.clearMap();
-        this._stage = 1;
-    
-        //  M O U S E  E V E N T S
-        //this.addMouseEvent(this);
+            //  ADD IMAGE DATA TO THE MODEL CLASS
+        if(this.mapId != null){
+
+            this.houseMap = this.model.getHouseMap(this.mapId)[0];
+
+            this.mapBoundariesCoords = this.houseMap.customBoundariesCoords;
+            this.centroid = this.houseMap.centroid;
+            this.faceCoords = this.houseMap.faceCoords;
+            this.type = this.houseMap.type;
+            this._stage = this.houseMap.stage;
+
+            let data = {
+              src: this.houseMap.imageData.src,
+              width: Utility.resizeObject(this.canvasSize, this.houseMap.imageData.width, this.houseMap.imageData.height).width,
+              height: Utility.resizeObject(this.canvasSize, this.houseMap.imageData.width, this.houseMap.imageData.height).height
+            };
+
+            let object = new Object({
+              layer: this.firstLayer,
+              data: data,
+              canvasSize: this.canvasSize,
+              objectName: 'map',
+              attribute: this.attribute
+            });
+
+            this.start();
+
+
+            console.log(this.mapBoundariesCoords,this.centroid,this.faceCoords,this.type,this._stage);
+
+        } else {
+
+          // this.clearMap();
+
+          // INITIALIZING STAGE
+          this._stage = 1;
+
+          //  M O U S E  E V E N T S
+          // this.addMouseEvent(this);
+
+        }
         
     }
 
@@ -178,6 +213,8 @@ class App {
                 this.assist.drawMask({layer: this.firstLayer, points: this.mapBoundariesCoords, size: this.RECT_SIZE});
                 this.assist.drawBoundaries({layer: this.firstLayer, points: this.mapBoundariesCoords});
                 this.assist.drawBharamNabhi({layer: this.firstLayer, centroid: this.centroid});
+                this.assist.drawDirectionLines(this.firstLayer, this.faceCoords, this.centroid, this.division, this.angle);
+                this.assist.drawFacingLine(this.firstLayer, this.centroid, this.faceCoords);
                 let stageThird = new StageThird({layer: this.secondLayer, className: "find-distance"});
                 stageThird.startDrawing(this);
               }
@@ -330,8 +367,8 @@ class App {
                         attribute: that.attribute
                     });
 
-                    that.houseMap = (that.model.hasHouseMap()) ? 
-                    that.model.getHouseMap : that.model.add(data.src);
+                    that.mapId = Math.floor(1000000000 + Math.random() * 9000000000);
+                    that.houseMap = that.model.add({id: that.mapId, image: {src: img.src, width: this.width, height: this.height}});
                     that.start();
                     that.DISABLE = false;
 
@@ -387,8 +424,8 @@ class App {
                     attribute: that.attribute
                 });
 
-                that.houseMap = (that.model.hasHouseMap()) ? 
-                that.model.getHouseMap : that.model.add(data.src);
+                that.mapId = Math.floor(1000000000 + Math.random() * 9000000000);
+                that.houseMap = that.model.add({id: that.mapId, image: {src: img.src, width: this.width, height: this.height}});
                 that.start();
                 that.DISABLE = false;
 

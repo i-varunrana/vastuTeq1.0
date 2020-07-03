@@ -98,7 +98,7 @@ export default class StageThird {
         .attr('class', 'col-md-6').append('select')
         .attr('type','text').attr('class', 'form-control form-control-sm text-sm');
 
-        this.unit.append('option').attr('selected','').attr('disabled','').html('select Unit');
+        this.unit.append('option').attr('value',"0").html('Select Unit');
         this.unit.append('option').attr('class','text-uppercase text-sm').attr('value', 'meter').text('Meter');
         this.unit.append('option').attr('class','text-uppercase text-sm').attr('value', 'feet').text('Feet');
         this.unit.append('option').attr('class','text-uppercase text-sm').attr('value', 'inch').text('Inch');
@@ -113,13 +113,13 @@ export default class StageThird {
         this.actionbox.show();
 
         saveBtn.on("click", (e) => {
+            console.log(this.distance.property("value"),this.unit.property("value") == "0");
 
-            if((this.distance.property("value") == undefined || this.distance.property("value") == "") &&
-            (this.unit.property("value") == undefined || this.unit.property("value") == "")) {
-
-
-                this.showToast("warning","Please enter distance and unit between two points");
-
+            if((this.distance.property("value") == undefined || this.distance.property("value") == "")) {
+                this.showToast("warning","Please enter distance");
+            }
+            else if((this.unit.property("value") == "" || this.unit.property("value") == "0")){
+                this.showToast("warning","Please enter unit");
             } else {
 
             this.actionbox.clear().hide();
@@ -135,7 +135,8 @@ export default class StageThird {
             that.distanceBetweenTwoPoints = {unit:unitM, distance:distance, scale:scale};
 
             that._stage = 4;
-            that.model.staging(4);
+            that.model.editStage(that.mapId, 4);
+            that.model.editDimension(that.mapId, {unit:unitM, distance:distance, scale:scale});
             
             this.remove();
             that.start();

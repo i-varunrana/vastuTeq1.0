@@ -117,6 +117,11 @@
   font-size: 12px;
 }
 
+.border-thick {
+  border-color: #6869ab !important;
+  border-width: 1px !important;
+}
+
 .divider {
   width: 100%;
   border-top: 1px solid #ccc;
