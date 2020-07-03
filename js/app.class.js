@@ -83,6 +83,7 @@ class App {
         this._zoomEventListener();
         this._windowResizeEventListener();
         this._objectPropertiesEventListener();
+        this._alignObejctToBrahmnabhi();
 
         // ?  A P P  I N I T I A L I Z E
         this._init();
@@ -141,6 +142,7 @@ class App {
             this.faceCoords = this.houseMap.faceCoords;
             this.type = this.houseMap.type;
             this._stage = this.houseMap.stage;
+            this.distanceBetweenTwoPoints = this.houseMap.dimenision;
 
             let data = {
               src: this.houseMap.imageData.src,
@@ -163,7 +165,7 @@ class App {
 
         } else {
 
-          // this.clearMap();
+          //this.clearMap();
 
           // INITIALIZING STAGE
           this._stage = 1;
@@ -237,6 +239,9 @@ class App {
                 this.mapPolygonsArray = Utility.getIntersectionPoints(this.calNorthAngle(),this.centroid,this.mapBoundariesCoords, this.division);
                 this.mapPolygonsAreaArray = Utility.getPolygonsArea(this.mapPolygonsArray);
 
+                // console.log(this.mapBoundariesCoords,this.faceCoords,this.centroid);
+                // console.log(this.screenPolygons,this.mapPolygonsArray,this.mapPolygonsAreaArray);
+
                 // ? DRAW BAR CHART
                 this.modal.drawMap({areaArr: this.mapPolygonsAreaArray, division: this.division, dimension: this.distanceBetweenTwoPoints});
                 
@@ -283,6 +288,20 @@ class App {
 
      
     // ?  A L L  L I S T E N E R  F U N C T I O N  ? //
+
+    // ? A L I G N  O B J E C T  T O  C E N T E R
+    _alignObejctToBrahmnabhi() {
+      // CLASS REFERENCE
+      let that = this;
+
+      d3.select('[name="align-center"]').on('click', () => {
+        let object = d3.select('.active[data-map-object]');
+        let width = object.select('rect').attr('width');
+        let height = object.select('rect').attr('height');
+        object.attr('transform', `translate(${this.centroid.x - width/2},${this.centroid.y - height/2})`);
+        
+      })
+    }
   
 
     // ? O B J E C T  C L I C K  E V E N T  L I S T E N E R

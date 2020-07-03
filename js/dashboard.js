@@ -14,7 +14,7 @@ for(let i in maps) {
 	.attr('data-map-id',maps[i].id);
 	cardContainer.append('img').attr('class','card-img-top').attr('src',maps[i].imageData.src)
 	var cardBody = cardContainer.append('div').attr('class','card-body border-top border-thick')
-	cardBody.append('div').attr('class','project-name card-text').text('PROJECT NAME')
+	cardBody.append('div').attr('class','project-name card-text').text(`Property ID: ${maps[i].id}`)
 	cardBody.append('div').attr('class','last-update card-text').text('Last edited 19 hours ago')
 
 }

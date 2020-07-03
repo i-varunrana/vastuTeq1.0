@@ -30,7 +30,7 @@
     <section class="ayadi-container p-4">
         <div class="card p-2 pb-4">
             <h4 class="text-center">Ayadi Calculator</h4>
-            <div class="container d-flex justify-content-center align-items-center">
+            <div class="container d-flex justify-content-center overflow-auto">
                 <div class="w-25 border p-2">
 
                     <div class="container text-center border-bottom">
@@ -42,19 +42,19 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="text-sm" for="exampleFormControlInput1">Length</label><span class="text-sm ml-2 text-danger unit-text">Feet</span>
-                                    <input type="email" class="form-control form-control-sm text-sm" id="exampleFormControlInput1" placeholder="">
+                                    <input type="number" class="form-control form-control-sm text-sm" id="exampleFormControlInput1" placeholder="" name="length">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="text-sm" for="exampleFormControlInput1">Breadth</label><span class="text-sm ml-2 text-danger unit-text">Feet</span>
-                                    <input type="email" class="form-control form-control-sm text-sm" id="exampleFormControlInput1" placeholder="">
+                                    <input type="number" class="form-control form-control-sm text-sm" id="exampleFormControlInput1" placeholder="" name="breadth">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="text-sm" for="exampleFormControlInput1">1 Hasta</label><span class="text-sm ml-2 text-danger">Inch</span>
-                                    <input type="email" class="form-control form-control-sm text-sm" id="exampleFormControlInput1" placeholder="">
+                                    <input type="number" class="form-control form-control-sm text-sm" id="exampleFormControlInput1" placeholder="" name="hasta" value="33">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -210,18 +210,19 @@
 
                     <div class="container mt-2 border-top pt-3">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-outline-primary btn-sm btn-block">Calculate</button>
+                            <button type="submit" class="btn btn-outline-primary btn-sm btn-block calculate-btn">Calculate</button>
                         </div>
                     </div>
 
                 </div>
-                <div class="w-75 border p-3 display-report-area bg-secondary">
 
+                <div class="w-75 border p-3 display-report-area overflow-auto text-center">
+                    Ayadi Report Will Appear Here
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="js/ayadi.js"></script>
+    <script src="js/ayadi.js" type="module" defer></script>
 </body>
 </html>

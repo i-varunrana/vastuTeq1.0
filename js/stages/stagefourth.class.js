@@ -75,20 +75,67 @@ export default class StageFourth {
 
         that.faceCoords = [pointA, pointB];
         that.model.editFaceCoords(that.mapId, [pointA, pointB]);
-        that.start();
+
+        // that.start();
+        that.assist.drawBackgroundGrid(that.firstLayer, that.centroid, that.faceCoords, that.division, that.angle);
+        that.assist.drawMask({layer: that.firstLayer, points: that.mapBoundariesCoords, size: that.RECT_SIZE});
+        that.assist.drawBoundaries({layer: that.firstLayer, points: that.mapBoundariesCoords});
+        that.assist.drawBharamNabhi({layer: that.firstLayer, centroid: that.centroid});
+        that.assist.drawDirectionLines(that.firstLayer, that.faceCoords, that.centroid, that.division, that.angle);
+        that.assist.drawFacingLine(that.firstLayer, that.centroid, that.faceCoords);
+        that.assist.drawGrid(that.firstLayer, that.centroid, that.faceCoords, that.screenBoundariesCoords, that.division, that.angle);
+
+        that.screenPolygons = Utility.getIntersectionPoints(that.calNorthAngle(),that.centroid,that.screenBoundariesCoords, that.division);
+        that.mapPolygonsArray = Utility.getIntersectionPoints(that.calNorthAngle(),that.centroid,that.mapBoundariesCoords, that.division);
+        that.mapPolygonsAreaArray = Utility.getPolygonsArea(that.mapPolygonsArray);
+
+        // ? DRAW BAR CHART
+        that.modal.drawMap({areaArr: that.mapPolygonsAreaArray, division: that.division, dimension: that.distanceBetweenTwoPoints});
+        
 
       })
 
       gridSelectbox.on("change", function() {
         let division = d3.select(this).property('value');
         that.division = division;
-        that.start();
+        
+        // that.start();
+        that.assist.drawBackgroundGrid(that.firstLayer, that.centroid, that.faceCoords, that.division, that.angle);
+        that.assist.drawMask({layer: that.firstLayer, points: that.mapBoundariesCoords, size: that.RECT_SIZE});
+        that.assist.drawBoundaries({layer: that.firstLayer, points: that.mapBoundariesCoords});
+        that.assist.drawBharamNabhi({layer: that.firstLayer, centroid: that.centroid});
+        that.assist.drawDirectionLines(that.firstLayer, that.faceCoords, that.centroid, that.division, that.angle);
+        that.assist.drawFacingLine(that.firstLayer, that.centroid, that.faceCoords);
+        that.assist.drawGrid(that.firstLayer, that.centroid, that.faceCoords, that.screenBoundariesCoords, that.division, that.angle);
+
+        that.screenPolygons = Utility.getIntersectionPoints(that.calNorthAngle(),that.centroid,that.screenBoundariesCoords, that.division);
+        that.mapPolygonsArray = Utility.getIntersectionPoints(that.calNorthAngle(),that.centroid,that.mapBoundariesCoords, that.division);
+        that.mapPolygonsAreaArray = Utility.getPolygonsArea(that.mapPolygonsArray);
+
+        // ? DRAW BAR CHART
+        that.modal.drawMap({areaArr: that.mapPolygonsAreaArray, division: that.division, dimension: that.distanceBetweenTwoPoints});
       })
 
       angleInputbox.on("change", function() {
           let theta = (angleInputbox.property('value') == "") ? 0 : parseFloat(angleInputbox.property('value'));
-          that.angle = theta;
-          that.start();
+          that.angle = -theta;
+
+          // that.start();
+          that.assist.drawBackgroundGrid(that.firstLayer, that.centroid, that.faceCoords, that.division, that.angle);
+          that.assist.drawMask({layer: that.firstLayer, points: that.mapBoundariesCoords, size: that.RECT_SIZE});
+          that.assist.drawBoundaries({layer: that.firstLayer, points: that.mapBoundariesCoords});
+          that.assist.drawBharamNabhi({layer: that.firstLayer, centroid: that.centroid});
+          that.assist.drawDirectionLines(that.firstLayer, that.faceCoords, that.centroid, that.division, that.angle);
+          that.assist.drawFacingLine(that.firstLayer, that.centroid, that.faceCoords);
+          that.assist.drawGrid(that.firstLayer, that.centroid, that.faceCoords, that.screenBoundariesCoords, that.division, that.angle);
+          d3.select('.facing-degree').text(`${theta}°`)
+  
+          that.screenPolygons = Utility.getIntersectionPoints(that.calNorthAngle(),that.centroid,that.screenBoundariesCoords, that.division);
+          that.mapPolygonsArray = Utility.getIntersectionPoints(that.calNorthAngle(),that.centroid,that.mapBoundariesCoords, that.division);
+          that.mapPolygonsAreaArray = Utility.getPolygonsArea(that.mapPolygonsArray);
+  
+          // ? DRAW BAR CHART
+          that.modal.drawMap({areaArr: that.mapPolygonsAreaArray, division: that.division, dimension: that.distanceBetweenTwoPoints});
       })
 
       vpm.on('click', function() {

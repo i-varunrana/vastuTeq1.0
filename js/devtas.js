@@ -1599,7 +1599,7 @@ let devtaContainer = d3.select('.leftside');
 
 for (let i = 0; i < devtaNameData.length; i++ ) {
     
-    let btns = devtaContainer.append('button').attr('class','devta-btn')
+    let btns = devtaContainer.append('button').attr('class','devta-btn bubbly-button')
     .attr('devta-name', devtaNameData[i]).text(devtaNameData[i]);
 
     if (yellow.includes(devtaNameData[i].toUpperCase())) {

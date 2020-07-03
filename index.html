@@ -10,7 +10,9 @@
     <!-- FONTAWESOME CSS -->
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- JQUERY -->
+    <script src="js/helper/jquery.min.js"></script>
     <!-- D3 JS SCRIPT -->
     <script src="js/main.js" type="module" defer></script>
 
@@ -21,26 +23,19 @@
             <img class="logo" src="assets/logo/logo2.svg" alt="logo">
         </div>
         <div class="login-box">
-            <div class="form-structor">
-                <div class="signup">
-                    <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
-                    <div class="form-holder">
-                        <input name="name" type="text" class="input signup-input text-capitalize" placeholder="Name" />
-                        <input name="email" type="email" class="input signup-input" placeholder="Email" />
-                        <input name="password" type="password" class="input signup-input" placeholder="Password" />
-                    </div>
-                    <button class="signup-submit-btn">Sign up</button>
+            <div class="form" id="form">
+                <div class="field email">
+                  <div class="icon"></div>
+                  <input class="input" id="email" type="email" placeholder="Email" autocomplete="off"/>
                 </div>
-                <div class="login slide-up">
-                    <div class="center">
-                        <h2 class="form-title" id="login"><span>or</span>Log in</h2>
-                        <div class="form-holder">
-                            <input name="email" type="email" class="input login-input" placeholder="Email" />
-                            <input name="password" type="password" class="input login-input" placeholder="Password" />
-                        </div>
-                        <button class="login-submit-btn">Log in</button>
-                    </div>
+                <div class="field password">
+                  <div class="icon"></div>
+                  <input class="input" id="password" type="password" placeholder="Password"/>
                 </div>
+                <button class="button" id="submit">LOGIN
+                  <div class="side-top-bottom"></div>
+                  <div class="side-left-right"></div>
+                </button><small>Fill in the form</small>
             </div>
         </div>
     </section>

@@ -323,7 +323,7 @@ export default class Assist {
         .attr("y1", centroid.y)
         .attr("x2", perpendicularPointOnFacingWall.x)
         .attr("y2", perpendicularPointOnFacingWall.y)
-        .attr("stroke", "blue")
+        .attr("stroke", "red")
         .attr("stroke-width", 4);
 
         let facingDegree = layer
@@ -331,10 +331,11 @@ export default class Assist {
         .classed("facing-degree", true)
         .attr("x", perpendicularPointOnFacingWall.x)
         .attr("y", perpendicularPointOnFacingWall.y)
-        .attr("fill", "blue")
-        .attr("font-size", "18px")
-        .attr("font-weight", "bold")
-        .attr("dominant-baseline", "auto")
+        .attr("fill", "red")
+        .style('font-size', '14px')
+        .style('font-family','Raleway_Bold')
+        .attr("text-anchor", "middle")
+        .attr("dy","-0.5em")
         .text("0°");
     }
 

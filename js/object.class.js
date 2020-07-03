@@ -72,7 +72,7 @@ export default class Object {
          .append("rect")
          .classed("rect-border", true)
          .style("stroke","black")
-         .style("stroke-width",2)
+         .style("stroke-width",1)
          .style("fill-opacity",0)
          .attr("width", function(d){ return d.width })
          .attr("height", function(d){ return d.height });

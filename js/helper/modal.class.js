@@ -153,11 +153,12 @@ export default class modal {
 
                 barGroups.append('text')
                     .attr('class', 'divergence')
-                    .attr('x', (a) => xScale(a.name) + xScale.bandwidth() / 2)
-                    .attr('y', (a) => yScale(a.value) - 5)
-                    .attr('fill', 'white')
+                    .attr('y', (a) => xScale(a.name) + xScale.bandwidth() / 2)
+                    .attr('x', (a) => - yScale(a.value) + 30)
+                    .attr('transform','rotate(-90)')
+                    .attr('fill', 'black')
                     .attr('text-anchor', 'middle')
-                    .style('font-size','12px')
+                    .style('font-size','14px')
                     .text((a, idx) => {
                         const divergence = (a.value - actual.value).toFixed(1)
 
@@ -187,8 +188,9 @@ export default class modal {
         barGroups
             .append('text')
             .attr('class', 'value')
-            .attr('x', (a) => xScale(a.name) + xScale.bandwidth() / 2)
-            .attr('y', (a) => yScale(a.value) - 5)
+            .attr('y', (a) => xScale(a.name) + xScale.bandwidth() / 2)
+            .attr('x', (a) => - yScale(a.value) + 30)
+            .attr('transform','rotate(-90)')
             .attr('text-anchor', 'middle')
             .style('font-size','12px')
             .text((a) => `${a.value}`)

@@ -1,4 +1,7 @@
-        let AAYA = [
+ 
+ import Template from './helper/template.class.js';
+
+ let AAYA = [
            {remainder: 0, result: `CONSIDERED GOOD FOR RELIGIOUS MERITS`},
            {remainder: 1, result: `BECOMES POOR`},
            {remainder: 2, result: `ILL HEALTH TO WIFE`},
@@ -13,7 +16,7 @@
            {remainder: 11, result: `NAME AND FAME`}
         ];
 
-        let VYAYA = [
+let VYAYA = [
             {remainder: 0, result: `CONDUCTIVE TO HAPPINESS`},
             {remainder: 1, result: `ACHIEVES SUCCESS`},
             {remainder: 2, result: `WILL BE VICTORIOUS`},
@@ -26,7 +29,7 @@
             {remainder: 9, result: `HAS GOOD FRIENDS`}
         ];
 
-        let AMSHA = [
+let AMSHA = [
             {remainder: 1, amsha: "TASKARA", result: `THIEF`},
             {remainder: 2, amsha: "BHUKTI", result: `ENJOYMENT`},
             {remainder: 3, amsha: "SAKTI", result: `POWER`},
@@ -38,7 +41,7 @@
             {remainder: 9, amsha: "PRESHIYAN", result: `SERVANT`},
         ]
 
-        let YONI = [
+let YONI = [
             {remainder: 1, yoni: "DHWAJA", face: "EAST", result: `FAME,  BEST FOR CLOTH SHOP AUR DHARMSHALA`},
             {remainder: 2, yoni: "DHUMA", face: "SOUTH EAST", result: `GOOD FOR RESTAURANT OR BUSINESS DEPENDENT ON KITCHEN, BAKERY`},
             {remainder: 3, yoni: "SIMHA", face: "SOUTH", result: `GOOD FOR WEAPONRY, AUTOMOBILES, DRAMA HALL TEMPLES`},
@@ -49,7 +52,7 @@
             {remainder: 8, yoni: "KAAK", face: "NORTH EAST", result: `GOOD FOR MEDITATION`},
         ];
 
-        let VARA = [
+let VARA = [
             {remainder: 1, day: "SUNDAY", result: `NOT FAVOURABLE`},
             {remainder: 2, day: "MONDAY", result: `FAVOURABLE`},
             {remainder: 3, day: "TUESDAY", result: `NOT FAVOURABLE`},
@@ -59,7 +62,7 @@
             {remainder: 7, day: "SATURDAY", result: `NOT FAVOURABLE`},
         ];
 
-        let TITHI = [
+let TITHI = [
             {remainder: 0, tithi: "POORNIMA", result: `NOT FAVOURABLE * MANSARA DOES NOT CONSIDER POORANMASI AS UNFAVOURABLE`},
             {remainder: 1, tithi: "PRATHMA", result: `NOT FAVOURABLE`},
             {remainder: 2, tithi: "DVITYA", result: `FAVOURABLE`},
@@ -128,5 +131,130 @@ let options = ownerNakshatraSelect.selectAll("option")
       .attr("value", function(d) {
         return d.value;
       });
+
+d3.select('.calculate-btn').on('click', () => {
+    let realLength, realBreadth, length, breadth, hasta, siUnit, reportType, reportContainer;
+    
+    realLength = d3.select('[name="length"]').property('value');
+    realBreadth = d3.select('[name="breadth"]').property('value');
+    siUnit = d3.select("[name='dimension-unit']").property('value')
+    hasta = d3.select('[name="hasta"]').property('value');
+
+    if(realLength == "" || realBreadth == "" || hasta == "" || siUnit == "") {
+        alert("Please provide all details");
+
+    } else {
+        length = convertIntoFeet(realLength, siUnit);
+        breadth = convertIntoFeet(realBreadth, siUnit);
+
+        reportContainer = d3.select('.display-report-area').html(Template.aayadiDetailedReport(
+            realLength,
+            realBreadth,
+            siUnit,
+            (typeof calculateAaya(length,breadth,hasta,siUnit) === 'undefined') ? "Sonthing went wrong" : calculateAaya(length,breadth,hasta,siUnit).result,
+            (typeof calculateVara(length,breadth,hasta,siUnit) === 'undefined') ? "Sonthing went wrong" : calculateVara(length,breadth,hasta,siUnit).result,
+            (typeof calculateAmsha(length,breadth,hasta,siUnit) === 'undefined') ? "Sonthing went wrong" : calculateAmsha(length,breadth,hasta,siUnit).result,
+            (typeof calculateVyaya(length,breadth,hasta,siUnit) === 'undefined') ? "Sonthing went wrong" : calculateVyaya(length,breadth,hasta,siUnit).result,
+            (typeof calculateYoni(length,breadth,hasta,siUnit) === 'undefined') ? "Sonthing went wrong" : calculateYoni(length,breadth,hasta,siUnit).result,
+            (typeof calculateTithi(length,breadth,hasta,siUnit) === 'undefined') ? "Sonthing went wrong" : calculateTithi(length,breadth,hasta,siUnit).result
+        ));
+
+        console.log("Everthing in Feet :");
+        console.log("length: ",length," | breadth: ", breadth," | hasta: ", hasta, " | siUnit: ", siUnit);
+    }
+})      
+
+
+function getCircum(length, breadth) {
+    return 2*(length + breadth);
+}
+
+function calculateAaya(length, breadth, hasta) {
+    let circumference = getCircum(length,breadth);
+    let aayadi = Math.round(circumference / hasta);
+    let result = (aayadi * 8) % 12;
+    //console.table({"calculation":"Aaya","circumfereence: ":circumference, "aayadi": aayadi, "remainder": result});
+    let response = AAYA.find((obj, i) => {
+        if (obj.remainder === result) {
+            return obj;
+        }  
+    })
+
+    return response;
+}
+
+function calculateAmsha(length, breadth, hasta) {
+    let circumference = getCircum(length,breadth);
+    let aayadi = Math.round(circumference / hasta);
+    let result = (aayadi * 4) % 9;
+    let response = AMSHA.find((obj, i) => {
+        if (obj.remainder === result) {
+            return obj;
+        }  
+    })
+    return response;
+}
+
+function calculateVyaya(length, breadth, hasta) {
+    let circumference = getCircum(length,breadth);
+    let aayadi = Math.round(circumference / hasta);
+    let result = (aayadi * 9) % 10;
+    let response = VYAYA.find((obj, i) => {
+        if (obj.remainder === result) {
+            return obj;
+        }  
+    })
+    return response;
+}
+
+function calculateYoni(length, breadth, hasta) {
+    let circumference = getCircum(length,breadth);
+    let aayadi = Math.round(circumference / hasta);
+    let result = (aayadi * 3) % 9;
+    let response = YONI.find((obj, i) => {
+        if (obj.remainder === result) {
+            return obj;
+        }
+    })
+    return response;
+}
+
+function calculateVara(length, breadth, hasta) {
+    let circumference = getCircum(length,breadth);
+    let aayadi = Math.round(circumference / hasta);
+    let result = (aayadi * 9) % 7;
+    let response = VARA.find((obj, i) => {
+        if (obj.remainder === result) {
+            return obj;
+        }  
+    })
+    return response;
+}
+
+function calculateTithi(length, breadth, hasta) {
+    let circumference = getCircum(length,breadth);
+    let aayadi = Math.round(circumference / hasta);
+    let result = (aayadi * 9) % 30;
+    let response = TITHI.find((obj) => {
+        if (obj.remainder === result) {
+            return obj;
+        }  
+    })
+    return response;
+}
+
+
+
+function convertIntoFeet(value, siUnit) {
+    if(siUnit === "inch"){
+        return value / 12;
+    }else if(siUnit == "meter") {
+        return value * 3.281;
+    }else if(siUnit == "yard") {
+        return value * 3;
+    }else if(siUnit == "feet") {
+        return value;
+    }
+}
       
       

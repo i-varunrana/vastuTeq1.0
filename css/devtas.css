@@ -29,7 +29,7 @@
 }  
 
 body {
-    font-family: 'Raleway-Light';
+    font-family: 'Raleway-Regular';
     overflow: hidden;
 }  
 
@@ -41,7 +41,14 @@ body {
 }
 
 .devta-btn {
-    font-size: 10px;
+
+    font-family: 'Raleway-semiBold';
+    font-size: 9px;
+    transition: 350ms ease-in-out all;
+}
+
+.devta-btn:hover {
+    scale: 0.5;
 }
 
 .modal-dialog {
@@ -68,9 +75,15 @@ body {
 }
 
 .desc {
-    font-size: 14px;
+    font-size: 16px;
 }
 
-#desc-container {
-    overflow: scroll;
+
+/* Important part */
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 550px;
+    overflow-y: auto;
 }
